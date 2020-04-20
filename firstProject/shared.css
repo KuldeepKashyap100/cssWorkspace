@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+.main-header {
+	width: 100%;
+	background-color: #55d855;
+	padding: 8px 16px;
+}
+.main-header__brand {
+    color: darkgreen;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+.main-header > div {
+    display: inline-block;
+    vertical-align: middle;
+}
+.main-nav {
+    display: inline-block;
+    width: calc(100% - 74px);
+}
+.main-nav__items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: right;
+    vertical-align: middle;
+}
+.main-nav__item {
+    display: inline-block;
+    margin: 0 16px; 
+}
+.main-nav__item > a {
+    text-decoration: none;
+    color: darkgreen;
+    font-weight: bold;
+    padding: 10px 0;
+}
+/* .main-nav__item a::after {
+    content: ' (Link)';
+    color: red;
+}
+.main-nav__item a::before {
+    content: ' (Link)';
+    color: red;
+} */
+
+/* p::first-letter {
+    color: red;
+    font-size: 20px
+} */
+
+.main-nav__item a:hover,
+.main-nav__item a:active {
+    color: white;
+    border-bottom: 5px solid white;
+}
+
+.main-nav__item--cta a{
+    color: white;
+    background-color: #F44336;
+    border-radius: 8px;
+    padding: 8px 16px;
+}
+
+.main-nav__item--cta a:hover,
+.main-nav__item--cta a:active {
+    color: #F44336;
+    background-color: white;
+    border: 0;
+}
+
+/* a.active {
+    color: white;
+}
+
+a:not(.active) {
+    color: darkgreen;
+} */
+
+
+
+.button {
+    background-color: darkgreen;
+    color: white;
+    font: inherit;
+    border: 1.5px solid darkgreen;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.button:hover,
+.button:active {
+    background: white;
+    color: darkgreen;
+}
+
+.button:focus {
+    /* outline: none; */
+}
+
+
+.main-footer {
+    background: black;
+    margin-top: 48px;
+    padding: 32px;
+}
+
+.main-footer__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.main-footer__link {
+    display: inline-block;
+    margin: 0 16px;
+}
+.main-footer__link a{
+    color: white;
+    text-decoration: none;
+}
+
+.main-footer__link a:hover,
+.main-footer_link a:active {
+    color: #ccc;
+}
