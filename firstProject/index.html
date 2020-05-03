@@ -4,8 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- viewport attribute tells the meta tag to target the viewport -->
+    <!-- width attribute tells the meta tag that html page width should be equal to device width -->
+    <!-- initial-scale attribute tells the initial zoom level -->
+    <!-- user-scalable sets wheather the user will be able to zoom in or not -->
+    <!-- maximum scale restricts the maximum zoom level -->
+    <!-- minimum scale restricts the minimum zoom level -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=3.0, minimum-scale=1.0">
+
     <title>uHost</title>
-    <link rel="shortcut icon" href="favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <link rel="stylesheet" href="shared.css">
@@ -13,10 +21,23 @@
 </head>
 
 <body>
+    <div class="backdrop"></div>
+    <div class="modal">
+        <h1 class="modal__title">Do you want to continue?</h1>
+        <div class="modal__actions">
+            <a href="start-hosting/index.html" class="modal__action">Yes!</a>
+            <button class="modal__action modal__action--negative" type="button" onclick="closeModal()">No</button>
+        </div>
+    </div>
     <header class="main-header">
         <div>
+            <button class="toggle-button">
+                <span class="toggle-button__bar"></span>
+                <span class="toggle-button__bar"></span>
+                <span class="toggle-button__bar"></span>
+            </button>
             <a href="index.html" class="main-header__brand">
-                uHost
+                <img src="images/uhost-icon.png" alt="uhost - your favorite hosting company" />
             </a>
         </div>
         <nav class="main-nav">
@@ -25,21 +46,34 @@
                     <a href="packages/index.html" class="active">Packages</a>
                 </li>
                 <li class="main-nav__item">
-                    <a href="customer.html">Customers</a>
+                    <a href="customers/index.html">Customers</a>
                 </li>
                 <li class="main-nav__item main-nav__item--cta">
-                    <a href="starthosting.html">Start Hosting</a>
+                    <a href="starthosting/index.html">Start Hosting</a>
                 </li>
             </ul>
         </nav>
     </header>
+    <nav class="mobile-nav">
+        <ul class="mobile-nav__items">
+            <li class="mobile-nav__item">
+                <a href="packages/index.html" class="active">Packages</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a href="customers/index.html">Customers</a>
+            </li>
+            <li class="mobile-nav__item mobile-nav__item--cta">
+                <a href="starthosting/index.html">Start Hosting</a>
+            </li>
+        </ul>
+    </nav>
     <main>
         <section id="product-overview">
             <h1>Get the freedom you deserve.</h1>
         </section>
         <section id="plans">
             <h1 class="section-title">Choose Your Plan</h1>
-            <div>
+            <div class="plan__list">
                 <article class="plan">
                     <h1 class="plan__title">FREE</h1>
                     <h2 class="plan__price">$0/month</h2>
@@ -51,7 +85,7 @@
                         <li>Basic Support</li>
                     </ul>
                     <div>
-                        <button class="button">CHOOSE PLAN</button>
+                        <button class="button" onclick="openModal()">CHOOSE PLAN</button>
                     </div>
                 </article>
                 <article class="plan plan--highlighted">
@@ -66,7 +100,7 @@
                         <li>Plus Support</li>
                     </ul>
                     <div>
-                        <button class="button">CHOOSE PLAN</button>
+                        <button class="button" onclick="openModal()">CHOOSE PLAN</button>
                     </div>
                 </article>
                 <article class="plan">
@@ -80,7 +114,7 @@
                         <li>Priority Support</li>
                     </ul>
                     <div>
-                        <button class="button">CHOOSE PLAN</button>
+                        <button class="button" onclick="openModal()">CHOOSE PLAN</button>
                     </div>
                 </article>
             </div>
@@ -121,6 +155,7 @@
             </ul>
         </nav>
     </footer>
+    <script src="shared.js"></script>
 </body>
 
 </html>
