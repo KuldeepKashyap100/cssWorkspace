@@ -1,3 +1,22 @@
+@font-face {
+    font-family: "AnonymousPro";
+    src: url("anonymousPro-Regular.woff2") format("woff2"),
+         url("anonymousPro-Regular.woff") format("woff")
+         url("anonymousPro-Regular.ttf") format("truetype");
+
+    /* font-display: swap; */
+    /* font-display: block; */
+    /* font-display: fallback; */
+    /* font-display: optional */
+    /* font-display: auto; */
+}
+
+@font-face {
+    font-family: "AnonymousPro";
+    src: url("anonymousPro-Bold.ttf") format("truetype");
+    font-weight: 700;
+}
+
 .background {
     background: url('../images/plans-background.jpg') center/cover;
     filter: grayscale(40%);
@@ -40,7 +59,32 @@ main {
     background: white;
     border: 1px solid darkgreen;
     padding: 2rem;
-    font-size: 1.3rem;
+
+    /*font properties*/
+    /* font-size: 1.2rem; */
+    /* font-family: "AnonymousPro"; */
+    /* font-weight: 700; */
+    /* line-height: 1; */
+
+    /* text-decoration: underline; */
+    /* text-decoration: overline; */
+    /* text-decoration: line-through; */
+    /* text-decoration: line-through dotted red; */
+    /* text-decoration: underline wavy red; */
+    /* text-decoration: none; */
+
+    /*text-shadow: 2px 2px 7px #414141;*/ 
+    /*text-shadow: x-axis y-axis blur color*/
+
+    /* font-style: italic; */
+
+    font: italic small-caps 700 1.2rem/2 "AnonymousPro", sans-serif;
+    /*font: font-style font-variant font-weight font-size/line-height font-family*/
+
+    /*default system fonts*/
+    /* font: menu; */ 
+    /* font: status-bar; */
+    /*font properties*/
 }
 
 .clearfix {
@@ -87,5 +131,17 @@ main {
     color: #bbb;
 }
 
-
-
+@media(min-width: 40rem) {
+    main {
+      /* margin: 3rem auto; */
+      max-width: 1000px;
+    }
+}
+@media(min-width: 1000px) {
+    .package {
+      border-left: 4px solid darkgreen;
+    }
+    #free {
+        border-right: 4px solid darkgreen;
+    }
+}
