@@ -36,6 +36,7 @@ main {
     margin: 1rem 0;
     border-left: none;
     position: relative;
+    overflow:hidden;
 }
 
 .package:hover,
@@ -102,7 +103,22 @@ main {
     background: #ff5454;
     font-size: 0.8rem;
     padding: 0.5rem;
-    margin: 1.3rem;
+    /* margin: 1.3rem; */
+    margin: 0;
+    width: 12rem;
+    text-align: center;
+    /* to rotate an elment*/
+    transform: rotateZ(45deg) translateX(3.5rem) translateY(-1rem);
+    /*elment rotates around the center of the element. we can change this by using below property. rotation happens in clockwise direction and if enter -ve degree it is in anti-clockwise direction.*/
+    /* transform-origin: top left; */
+    /*same as above*/
+    /* transform-origin: 0 0; */
+    /*1 rem to the right and 1rem down from the top left corner.*/
+    /* transform-origin: 1rem 1rem; */
+    /*same as default*/
+    /* transform-origin: 50% 50%;; */
+    transform-origin: center;
+    
 }
 
 #free {
