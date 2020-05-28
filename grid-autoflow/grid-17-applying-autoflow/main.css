@@ -1,0 +1,52 @@
+.container {
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 15rem);
+
+    /*to make the columns reponsive. so that new columns can be generated based upon the width of the viewport*/
+    /* grid-template-columns: repeat(auto-fill, 10rem); */
+
+    /*if the items are less we can use auto-fit it will center all the items if they are less to occupy entire row.
+    you can simulate this if you comment the items in the html*/
+    /* grid-template-columns: repeat(auto-fit, 10rem); */
+
+    /*only one row is defined so it will take 20rem and height of all other rows are auto*/
+    grid-template-rows: 20rem;
+
+    justify-content: center;
+    grid-gap: 1.5rem;
+    /*to define the height of automatically generated rows, auto is default value*/
+    /* grid-auto-rows: auto; */
+    /* grid-auto-rows: 8rem; */
+    grid-auto-rows: minmax(8rem,auto);
+
+    /*to add new items not in the new row but in column*/
+    /* grid-auto-flow: column; */
+
+    /*empty cells remains empty. but if we use dense this default behaviour will be overridden.*/
+    grid-auto-flow: row dense;
+    
+
+    /*to define the width of automatically generated columns, auto is default value*/
+    grid-auto-columns: 13rem;
+
+
+}
+
+.quote {
+  border: 1px solid #fa923f;
+  background: #ffbd87;
+  font-family: sans-serif;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.quote:nth-of-type(2) {
+  grid-column: span 2;
+}
+
+.quote--featured {
+  border: #ff4213;
+  background: #ff9f87;
+  grid-column: span 2;
+}

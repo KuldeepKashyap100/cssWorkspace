@@ -1,0 +1,8 @@
+display: flex;
+flex-direction: row, column, row-reverse, column-reverse;
+flex-wrap: nowrap, wrap, wrap-reverse
+align-items: stretch, center, flex-start, flex-end (align along cross axis)
+justify-content same as align-items but for main axis
+
+short hand
+flex-flow: row wrap;
