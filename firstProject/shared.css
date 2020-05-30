@@ -3,6 +3,14 @@
 :root {
     --dark-green: darkgreen;
     --light-red: #F44336;
+    --test-properties-for-mixin: {
+        color: darkred;
+        font-size: 40rem;
+    };
+    --heading-style: {
+        font-family: cursive;
+        font-weight: 700;
+    };
 }
 
 * {
@@ -11,6 +19,7 @@
 
 html {
     height: 100%;
+    @apply --test-properties-for-mixin;
 }
 
 body{
