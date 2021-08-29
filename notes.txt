@@ -1,0 +1,43 @@
+1. Setting height of child 100% refers to available height given by the parent container. But the height of the parent is calculated dynamically by the content it holds so it’s only as big as its content requires it to be. That’s why setting height: 100% has no effect. If we want it have an effect we would need to change height of “main”, “body” and “html” elements.
+
+2. For inline elements, we can’t set margin-top and margin-bottom because the might be inline with another element.
+
+3. Setting display: none to an element will take it out of the view flow, it is supposed to be used in conjunction with javascript (like in modal).
+
+4. If we want the mixture of inline and block element. We use inline-block it’ll allow margin-top and margin-bottom and padding etc.
+
+5. vertical-align: middle aligns the elements in middle of the parent.
+
+6. Box-shadow property to add shadow.
+7. Float property to change the position of block element to left or right of the page. It also takes the element out of the document flow
+
+8. To apply z-index position property needs to be applied on the same element.
+9. If z-index is same for two elements then precedence is decided by element order in html file. Element which comes first in html file have higher precedence.
+
+10. Positon absolute takes the element out of the document flow just like fixed but the context is nearest parent which have position property applied. For fixed position context is viewport. If none of the ancestors have position property applied then for absolute position context is HTML element.
+11. In relative position element is positioned relative to the current position. Element is not taken out of document flow.
+
+12. Stacking context ->  parent’s z-index matters.
+
+13. Background-position has 2 imp properties 
+    cover - container takes precedence over image. It will make sure image is fit in the container even of have to crop the image.
+    containe - image takes precedence over container. It will make sure entire image is present even if there is extra space left horizontally or vertically.
+
+14. An image(<img>) inside the div does not respect container boundaries. It takes actual height and width of the image.
+    also % values does not affect the width, height of the image till it is inside an inline element. you can use inline-block element to use % values.
+
+15. background-image: linear-gradient() can add a background where one color transition into another(it strart on edge but radial-gradient starts on some shape).
+
+16. filter: grayscale(100%) can be used to black and white the image.
+
+17. whenever an element has position: fixed and percentage unit, then the containing block is viewport.
+18. whenever an element has position: absolute and percentage unit, then the containing block is ancestor(content + padding).
+19. whenever an element has position: relative or static and percentage unit, then the containing block is ancestor(content). ancestor is closest block level element.
+
+20. if we change font-size in browser settings and we have used rem then it will adapt.
+
+21. vmin unit is realtive to min(vw, vh) and vmax unit is realtive to max(vw, vh).
+
+22. em calculates value based on inheritance. it becomes very complex if we any element has many ancestors also using em.
+
+23. margin: auto aligns the element to center horizontally(to only block level elements with width property applied).

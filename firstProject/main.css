@@ -24,7 +24,7 @@ body{
     /* background-size: cover; */
     /* background-repeat: no-repeat; */
 
-    /*background-position: 10px 50px;*/  /*first value if for left and right and second is for top and bottom */
+    /*background-position: 10px 50px;*/  /*first value if for the distance from left and second is for the distance from the top */
     /*background-position: 0% 100%; */  /*second value will crop the image from top if image does not fit. if 50% then 50% from top and 50% from bottom will be croped(i.e center).*/
     /*background-position: center;*/ /*image will be cropped 50% from top bottom left right.(i.e. center of the image is the center of the container)*/
     /* background-position: left top; */ /* left and top edge of the image aligned with left and top edge of the container*/
