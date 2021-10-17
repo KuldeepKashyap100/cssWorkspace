@@ -1,8 +1,10 @@
-1. Setting height of child 100% refers to available height given by the parent container. But the height of the parent is calculated dynamically by the content it holds so it’s only as big as its content requires it to be. That’s why setting height: 100% has no effect. If we want it have an effect we would need to change height of “main”, “body” and “html” elements.
+1. Setting height of child 100% refers to available height given by the parent container. But the height of the parent is calculated dynamically by the content it holds 
+    so it’s only as big as its content requires it to be. That’s why setting height: 100% has no effect. 
+    If we want it have an effect we would need to change height of “main”, “body” and “html” elements.
 
-2. For inline elements, we can’t set margin-top and margin-bottom because the might be inline with another element.
+2. For inline elements, we can’t set margin-top and margin-bottom because it might overlap top bottom elements.
 
-3. Setting display: none to an element will take it out of the view flow, it is supposed to be used in conjunction with javascript (like in modal).
+3. Setting display: none to an element will take it out of the document flow, it is supposed to be used in conjunction with javascript (like in modal).
 
 4. If we want the mixture of inline and block element. We use inline-block it’ll allow margin-top and margin-bottom and padding etc.
 
@@ -11,17 +13,18 @@
 6. Box-shadow property to add shadow.
 7. Float property to change the position of block element to left or right of the page. It also takes the element out of the document flow
 
-8. To apply z-index position property needs to be applied on the same element.
+8. To apply z-index "position" property needs to be applied on the same element.
 9. If z-index is same for two elements then precedence is decided by element order in html file. Element which comes first in html file have higher precedence.
 
-10. Positon absolute takes the element out of the document flow just like fixed but the context is nearest parent which have position property applied. For fixed position context is viewport. If none of the ancestors have position property applied then for absolute position context is HTML element.
+10. Positon absolute takes the element out of the document flow just like fixed but the context is nearest parent which have position property applied. For fixed position context is viewport. 
+    If none of the ancestors have position property applied then for absolute position context is HTML element.
 11. In relative position element is positioned relative to the current position. Element is not taken out of document flow.
 
 12. Stacking context ->  parent’s z-index matters.
 
-13. Background-position has 2 imp properties 
-    cover - container takes precedence over image. It will make sure image is fit in the container even of have to crop the image.
-    containe - image takes precedence over container. It will make sure entire image is present even if there is extra space left horizontally or vertically.
+13. Background-size has 2 imp properties 
+    cover - container takes precedence over image. It will make sure image is fit in the container even if have to resize the image.
+    contain - image takes precedence over container. It will make sure entire image is present even if there is extra space left horizontally or vertically.
 
 14. An image(<img>) inside the div does not respect container boundaries. It takes actual height and width of the image.
     also % values does not affect the width, height of the image till it is inside an inline element. you can use inline-block element to use % values.
@@ -41,3 +44,92 @@
 22. em calculates value based on inheritance. it becomes very complex if we any element has many ancestors also using em.
 
 23. margin: auto aligns the element to center horizontally(to only block level elements with width property applied).
+
+24. hardware pixels and css pixels are different. css pixel = hardware pixel / devicePixelRatio.
+
+24. responsive -> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    name=viewport -> target viewport
+    width=device-width -> width of our page = width of the device.
+    initial-scale=1.0 -> zoom level that will be applied
+
+25. media query example - @media (min-width: 40rem) and (max-width: 60rem) and (orientation: portrait){}.
+
+26. there are two families: generic families(serif, sans-serif, cursive, monospace) and font families.
+27. generic families are kind of headline under which multiple different font( or font family) comes.
+    ex- "times new roman"(font-family) and "georgia"(font-family) comes under serif(generic-family).
+        "helvetica" and "verdana" comes under sans-serif.
+
+28. if we apply generic-family to an element. it will take the font(font-family) selected in browser setting for that generic-family.
+    alternatively we can define a generic-family in our root css code.
+29. font-family can take multiple values.
+
+30. @import url("http://font-url.com") to import fonts in .css files.
+
+31.  font-weight can also take numberic value from 100-900.
+
+32. To import a local font that is on our computer @font-face { font-family: " ", src: url("../fonts/AnonymousPro.ttf")}.
+33. To change the case font-variant: small-caps to capitalize characters.
+34. To increase the space between each letter letter-spacing: 4px;
+35. line-height: 1, space between top and bottom of the line. 1 = font-size, 2 = 2 * font-size.
+36. text-shadow: 5px 5px blur gray, to add shadow to text.
+37. font-display fallack font is applied until the actual font is downloaded.
+
+38. display: inline-flex then the flex container takes the width required by its elements and does not change its width on window resize(so basically it behaves like inline element)
+    and the height is equal to height of max height element.
+    display: flex (block level behavior)
+
+39. on applying (display: flex) two other properties automatically applied (flex-direction: row and flex-wrap: no-wrap).
+40. flex-wrap possible values no-wrap, wrap, wrap-reverse.
+
+41. flex-direction: row (starting point top-left corner)
+    main-axis = x-axis (left to right)
+    cross-axis = y-axis (top to bottom)
+
+41. flex-direction: row-reverse (starting point top-right corner)
+    main-axis = x-axis (right to left)
+    cross-axis = y-axis (top to bottom)
+
+41. flex-direction: column (starting point top-left corner)
+    main-axis = y-axis (top to bottom)
+    cross-axis = x-axis (left to right)
+
+41. flex-direction: column-reverse (starting point bottom-left corner)
+    main-axis = y-axis (bottom to top)
+    cross-axis = x-axis (left to right)
+note - items aligns along with main-axis and wraps around cross-axis.
+
+42. shorthand for flex-direction and flex-wrap -> flex-flow: row wrap.
+
+43. align-items: stretch (default value), center, flex-start, flex-end (to align items along cross axis).
+
+44. justify-content: stretch (default value), center, flex-start, flex-end, space-between, space-around (to align items along main axis).
+
+45. align-content: flex-start ( allows us to align content along cross axis when content occupies  more than one line)
+
+46. Flexbox and the Z-Index: an element only has an effect, if the position  property with a value different from static  was applied
+    One exception from this behaviour is flexbox: Applying the z-index  to flex-items (so the elements inside of the flex-container) 
+    will change the order of these items even if no position  property was applied.
+
+Flex-items
+
+47. order: - 1 (allows us to change the order of elements that elements initially have based on the code in html. bigger the number later the element will be positioned)
+    note - row-reverse will the reverse the current order
+
+48. align-self: flex-start (allows us to position single element along cross axis)
+    note - difference in contrast to align-items is that align-items refers to all elements.
+
+49. flex-grow: 0 (default value) (allows us to divide extra width space between elements based on some ratio)
+    ex- one item has (flex-grow: 1) and other item has (flex-grow: 4) then extra width is divided by 5 and one part will go to first element and 4 parts will go to second element.
+
+50. flex-shrink: 1 (default value) (specifies how the item will shrink relative to the rest of the flex items inside the same container.
+    If the size of all flex items is larger than the flex container, items shrink to fit according to flex-shrink).
+    note - flex-shrink: 0 will disable the shrink
+
+51. flex-basis: auto (default value) (allows us to set width and height of flex item depending upon the direction of main-axis).
+    if flex-direction: row then flex-basis will refer to width of flex item.
+    if flex-direction: column then flex-basis will refer to the height of flex item.
+    actual width and height will act as fallback when flex-basis: auto.
+    possible values - px, %, rem , em
+
+52. shorthand for all the above properties - flex: 0(flex-grow) 1(flex-shrink) auto(flex-basis).
+
