@@ -8,13 +8,16 @@
 
 4. If we want the mixture of inline and block element. We use inline-block it’ll allow margin-top and margin-bottom and padding etc.
 
-5. vertical-align: middle aligns the elements in middle of the parent.
+5. vertical-align: middle aligns the elements in middle of the parent. display property must be inline or display-inline.
 
-6. Box-shadow property to add shadow.
-7. Float property to change the position of block element to left or right of the page. It also takes the element out of the document flow
+6. box-shadow property to add shadow. values -> offset-x | offset-y | blur-radius | spread-radius | color
+
+7. The float CSS property places an element on the left or right side of its container, allowing text and inline elements to wrap around it. 
+    The element is removed from the normal flow of the page, though still remaining a part of the flow.
 
 8. To apply z-index "position" property needs to be applied on the same element.
-9. If z-index is same for two elements then precedence is decided by element order in html file. Element which comes first in html file have higher precedence.
+
+9. If z-index is same for two elements then precedence is decided by element order in html file. Element which comes last in html file have higher precedence.
 
 10. Positon absolute takes the element out of the document flow just like fixed but the context is nearest parent which have position property applied. For fixed position context is viewport. 
     If none of the ancestors have position property applied then for absolute position context is HTML element.
@@ -22,16 +25,18 @@
 
 12. Stacking context ->  parent’s z-index matters.
 
-13. Background-size has 2 imp properties 
+13. background-size has 2 imp properties 
     cover - container takes precedence over image. It will make sure image is fit in the container even if have to resize the image.
     contain - image takes precedence over container. It will make sure entire image is present even if there is extra space left horizontally or vertically.
 
 14. An image(<img>) inside the div does not respect container boundaries. It takes actual height and width of the image.
     also % values does not affect the width, height of the image till it is inside an inline element. you can use inline-block element to use % values.
 
-15. background-image: linear-gradient() can add a background where one color transition into another(it strart on edge but radial-gradient starts on some shape).
+15. background-image: linear-gradient(red, blue) can add a background where one color transition into another(it strart on edge but radial-gradient starts on some shape).
 
-16. filter: grayscale(100%) can be used to black and white the image.
+16. filter: grayscale(100%) can be used to black and white the image. 
+    The filter CSS property applies graphical effects like blur or color shift to an element. 
+    Filters are commonly used to adjust the rendering of images, backgrounds, and borders.
 
 17. whenever an element has position: fixed and percentage unit, then the containing block is viewport.
 18. whenever an element has position: absolute and percentage unit, then the containing block is ancestor(content + padding).
@@ -41,7 +46,7 @@
 
 21. vmin unit is realtive to min(vw, vh) and vmax unit is realtive to max(vw, vh).
 
-22. em calculates value based on inheritance. it becomes very complex if we any element has many ancestors also using em.
+22. em calculates value based on inheritance. it becomes very complex if any element has many ancestors also using em.
 
 23. margin: auto aligns the element to center horizontally(to only block level elements with width property applied).
 
@@ -104,15 +109,16 @@ note - items aligns along with main-axis and wraps around cross-axis.
 
 44. justify-content: stretch (default value), center, flex-start, flex-end, space-between, space-around (to align items along main axis).
 
-45. align-content: flex-start ( allows us to align content along cross axis when content occupies  more than one line)
+45. align-content: flex-start (allows us to align content along cross axis when content occupies more than one line)
 
-46. Flexbox and the Z-Index: an element only has an effect, if the position  property with a value different from static  was applied
-    One exception from this behaviour is flexbox: Applying the z-index  to flex-items (so the elements inside of the flex-container) 
-    will change the order of these items even if no position  property was applied.
+46. Flexbox and the Z-Index: an element only has an effect, if the position  property with a value different from static was applied
+    One exception from this behaviour is flexbox: Applying the z-index to flex-items (so the elements inside of the flex-container) 
+    will change the order of these items even if no position property was applied.
 
 Flex-items
 
-47. order: - 1 (allows us to change the order of elements that elements initially have based on the code in html. bigger the number later the element will be positioned)
+47. order: - 1 (allows us to change the order of elements that elements initially have based on the code in html. bigger the number later the element will be positioned) 
+    (default value 0, -ve value moves elements left and +ve value moves elements right)
     note - row-reverse will the reverse the current order
 
 48. align-self: flex-start (allows us to position single element along cross axis)
@@ -133,3 +139,92 @@ Flex-items
 
 52. shorthand for all the above properties - flex: 0(flex-grow) 1(flex-shrink) auto(flex-basis).
 
+css-grid container
+
+53. display: grid to convert container into grid.
+54. grid-template-columns: 200px 2fr 20% 1fr; 
+    this will create 4 columnns of different widths.
+    column 2 will receive twice as width as column 4.
+    column 2 and column 4 will take width (100% - 200px) in 2:1.
+
+55. grid-template-columns: 200px 5rem 20% auto; 
+    auto value will make 4th column to occupy the remaining available width
+    same is the case with grid-template-row and height.
+
+56. grid-template-rows: 5rem 2.5rem; 
+    this will create 2 rows of different heights.
+
+57. grid-template-rows: [row-1-start] 5rem [row-1-end row-2-start] 2rem; 
+    we can assign single or multiple names to lines of grid.
+    now in cells we can specify row names instead of numbers. ex- grid-row-start: row-1-start.
+
+58. gap(gutter) between the lines.
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+
+59. we can define areas in grid container, and tell cells to occupy these areas-
+    grid-template-areas: "header header header header"
+                        "side . main main"
+                        "footer footer footer footer";
+    now cells can use grid-area: header;
+
+60. repeat css function takes 2 arguments times and pattern it should repeat.
+    ex- grid-template-columns: 25% 25% 25% 25%; will create 4 columns of equal width.
+        grid-template-columns: repeat(4, 25%)
+
+61. minmax function takes 2 arguments min and max height or width.
+
+62. How to specify grid area when using repeat function?
+    ex - grid-template-columns: repeat(4, [col-start] 25% [col-end]);
+    now in grid cell -  grid-column: col-start 2 / col-end 2;
+
+63. git-template-rows: 3.rem auto fit-content(8rem);
+    fit-content takes an argument which is a default size 
+    which will be used in case content is smaller or require less space is needed
+    but If the content require more space than that it will get this size though.
+
+64. justify-items: center (or start, end);
+    this property is used to position items along the rows.
+    it positions the elements in their grid tracks(cells it occupies).
+    default value is stretch.
+    
+65. align-items: center;
+    this property is used to position items along the columns.
+
+66. if the grid size if greater than the elements contained in it we can also collectively position the entire grid elements.
+    justify-content: center;(positioning along x-axis)
+    align-content: center;(positioning along y-axis)
+    
+67. grid-auto-rows: 8rem;
+    grid-auto-columns: 8rem;
+    allows to define the size of dynamically newly added rows (i.e when we have not specified the number of rows).
+
+68. grid-auto-flow: column;
+    by default direct childs of parent grid container will be added to new row
+    we can also make new content to be added on columns using this property.
+
+69. grid-template-columns: repeat(auto-fill, 10rem);
+    based on the width of the grid new columns are automatically added
+    grid-template-columns: repeat(auto-fit, 10rem);
+    when we don't have enough items in the row and it will try to fit the all the available items in the center.
+
+grid cell
+
+70. grid-column-start: 3; (start the cell from line no. 3, horizontally)
+    grid-column-end: 5; (end the cell on line no. 5, horizontally)
+    grid-row-start: 1; (start the cell from line no. 1, vertically)
+    grid-row-end: 3; (end the cell from line no. 3, vertically)
+
+71. grid-column-end: span 2; takes next two cells as width.
+
+72. shorthand grid-column: 1 / 2;
+              grid-row: 2 / 4;
+              grid-area: row-start/column-start / row-end/column-end;
+
+73. justify-self: center (align single cell elements along x-axis)
+    align-self: center (align single cell elements along y-axis)
+
+
+74. flexbox is one dimensional and grid is two dimensional.
+    grid is a great choice if we have a real layout with multiple dimensions.
+    ex - form label and input side by side
