@@ -8,7 +8,7 @@
 
 4. If we want the mixture of inline and block element. We use inline-block it’ll allow margin-top and margin-bottom and padding etc.
 
-5. vertical-align: middle aligns the elements in middle of the parent. display property must be inline or display-inline.
+5. vertical-align: middle aligns the elements in middle of the parent. display property must be inline or inline-block.
 
 6. box-shadow property to add shadow. values -> offset-x | offset-y | blur-radius | spread-radius | color
 
