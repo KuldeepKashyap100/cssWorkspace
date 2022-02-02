@@ -9,6 +9,8 @@
 4. If we want the mixture of inline and block element. We use inline-block it’ll allow margin-top and margin-bottom and padding etc.
 
 5. vertical-align: middle aligns the elements in middle of the parent. display property must be inline or inline-block.
+    The text-align CSS property sets the horizontal alignment of the content inside a block element or table-cell box. 
+    This means it works like vertical-align but in the horizontal direction.
 
 6. box-shadow property to add shadow. values -> offset-x | offset-y | blur-radius | spread-radius | color
 
@@ -46,9 +48,10 @@
 
 21. vmin unit is realtive to min(vw, vh) and vmax unit is realtive to max(vw, vh).
 
-22. em calculates value based on inheritance. it becomes very complex if any element has many ancestors also using em.
+22. em, the unit is relative to the font size of its parent element.
+    em calculates value based on inheritance. it becomes very complex if any element has many ancestors also using em.
 
-23. margin: auto aligns the element to center horizontally(to only block level elements with width property applied).
+23. margin: 0 auto aligns the element to center horizontally(to only block level elements with width property applied).
 
 24. hardware pixels and css pixels are different. css pixel = hardware pixel / devicePixelRatio.
 
@@ -172,24 +175,26 @@ css-grid container
     ex- grid-template-columns: 25% 25% 25% 25%; will create 4 columns of equal width.
         grid-template-columns: repeat(4, 25%)
 
-61. minmax function takes 2 arguments min and max height or width.
+61. minmax function takes 2 arguments, first argument tell us the minimum height or width an element should occupy
+    second argument tell us the maximum height or width an element should occupy.
 
 62. How to specify grid area when using repeat function?
     ex - grid-template-columns: repeat(4, [col-start] 25% [col-end]);
     now in grid cell -  grid-column: col-start 2 / col-end 2;
 
-63. git-template-rows: 3.rem auto fit-content(8rem);
+63. git-template-rows: 3.5rem auto fit-content(8rem);
     fit-content takes an argument which is a default size 
     which will be used in case content is smaller or require less space is needed
     but If the content require more space than that it will get this size though.
+    We should use it when we want some row to have some minimum size but also not be bigger than its content.
 
 64. justify-items: center (or start, end);
-    this property is used to position items along the rows.
+    this property is used to position items along the rows(x-axis).
     it positions the elements in their grid tracks(cells it occupies).
     default value is stretch.
     
 65. align-items: center;
-    this property is used to position items along the columns.
+    this property is used to position items along the columns(y-axis).
 
 66. if the grid size if greater than the elements contained in it we can also collectively position the entire grid elements.
     justify-content: center;(positioning along x-axis)
@@ -228,3 +233,161 @@ grid cell
 74. flexbox is one dimensional and grid is two dimensional.
     grid is a great choice if we have a real layout with multiple dimensions.
     ex - form label and input side by side
+
+
+2d-transformations
+
+75. moving the element we can also do using top, right, etc properties.
+    we can also move an element using margin.
+    but moving an element using transform property is hardware accelerated and it keeps the element in the document flow.
+
+76. transform: rotateZ(45deg)
+    rotates the element along z-axis and it rotates around the center of the element.
+    we can change from center using 
+    transform-origin: center(default value) or left top or 0 0(same as top left) or 1rem 1rem(from the top left corner) or 50% 50%(center).
+
+78. transform: translateX(1rem) (move an element on the x-axis).
+    if position property on an element is static then we cannot use top, right, etc properties to move an element.
+    we can use margin though but its kind of hacky way.
+
+79. transform: rotateZ(45deg) translateX(1rem);
+    rotate will the direction of x-axis of an element and now the element will move diagonally.
+
+80. transform: skewX(20deg) (skewed to the left)
+    skewX has the same effect as someone pulled our corners to the left.
+    transform: skewX(20deg)
+    skewY has the same effect as someone pulled our corners up so the top left corner pulled up a bit.
+
+81. transform: scaleX(2) (twice the normal size)
+    allows you to increase the width
+    transform: scaleY(2)
+    allows you to increase the height
+
+3d-transformations
+
+82. to visualize the axis with element watch video-6 of transform
+    z-axis goes through from front to back of the element and the element can spin around this axis.
+
+83. transform: perspective(100px) rotateY(80deg);
+    The perspective() CSS function defines a transformation that sets the distance between the user and the z=0 plane, 
+    the perspective from which the viewer would be if the 2-dimensional interface were 3-dimensional.
+    current style is same as "perspective: 100px" on parent container if we want to add perspective to all child elements
+
+84. perspective-origin: center(default value) or right or left;
+    to change the angle of perspective
+
+85. transform: translate(-100rem)
+    will move then element backward in 3d plane.
+    apply position: relative to parent container and position: absolute to child elements to form a cube
+
+86. transform-style: flat(default value) or preserve-3d;
+    when we rotate any container element by 90deg in x or y then all its children will also hide
+    event though they might have some rotation of their own. to avoid this behavior we use  preserve-3d;
+    definition - The transform-style CSS property sets whether children of an element are positioned in the 3D space 
+                or are flattened in the plane of the element.
+
+87. backface-visibility: hidden or visible;
+    if you want to hide the back of an element while it's flipping
+
+css transitions
+
+88. transitions are built-in animations. 
+    transitions are added by adding property transition and which other property like opacity or position
+    of an element should be watched and should be animated if it changes.
+    only few properties can be watched.
+    definition - CSS transitions provide a way to control animation speed when changing CSS properties. 
+    Instead of having property changes take effect immediately, 
+    you can cause the changes in a property to take place over a period of time. 
+    For example, if you change the color of an element from white to black, usually the change is instantaneous. 
+    With CSS transitions enabled, changes occur at time intervals that follow an acceleration curve, 
+    all of which can be customized.
+
+89. CSS transitions let you decide which properties to animate (by listing them explicitly), 
+    when the animation will start (by setting a delay), how long the transition will last (by setting a duration), 
+    and how the transition will run 
+
+90. transition: <property> <duration> <timing-function> <delay>;
+    transition: opacity 200ms ease-out 1s, transform 500ms ease-out 1s
+    -> first argument is which property you want to watch. with value "all" the transition will be played 
+        whenever any transitionable property changes.
+    -> second argument is duration over which you want to play an animation when one the watched properties changes.
+    -> third argument is a timing function which allows you how fast it should go through that duration
+        ease-out - start fast and end slow.
+        ease-in - start slower and end faster
+    -> fourth argument is delay, animation will wait till delay duration is completed.
+
+90. transition-timing-function: linear;
+    The transition-timing-function CSS property sets how intermediate values 
+    are calculated for CSS properties being affected by a transition effect.
+    cheatsheet - https://easings.net/
+
+91. transition does not work on display property, so to show animation in backdrop of modal
+    we have to use js to change value from none to block and then use some class like open and close
+    which changes some watchable property like opacity.
+
+css animations
+
+92. CSS animations make it possible to animate transitions from one CSS style configuration to another. 
+    Animations consist of two components, a style describing the CSS animation and 
+    a set of keyframes that indicate the start and end states of the animation’s style, 
+    as well as possible intermediate waypoints.
+
+93. There are three key advantages to CSS animations over traditional script-driven animation techniques:
+    -> They’re easy to use for simple animations; you can create them without even having to know JavaScript.
+    -> The animations run well, even under moderate system load. Simple animations can often perform poorly in JavaScript. 
+        The rendering engine can use frame-skipping and other techniques to keep the performance as smooth as possible.
+    -> Letting the browser control the animation sequence lets the browser optimize performance and efficiency by, 
+        for example, reducing the update frequency of animations running in tabs that aren't currently visible.
+    
+94. To create a CSS animation sequence, you style the element you want to animate with the animation property.
+    This lets you configure the timing, duration, and other details of how the animation sequence should progress. 
+    This does not configure the actual appearance of the animation, which is done using the @keyframes.
+
+95. ex -
+    @keyframes wiggle {
+        from {
+            transform: rotateZ(0deg);
+        }
+
+        to {
+            transform: rotateZ(10deg);
+        }
+    }
+    .start-hosting-button {
+        animation: wiggle 200ms 3s 8;
+    }
+    animatation property
+    -> first argument -> keyframe name
+    -> second argument -> duration of the animation
+    -> third argument -> delay
+    -> fourth argument -> animation iterations (how many times it'll play)
+    -> direction -> what should happen after one iteration ? does it snap back to the starting state and start the next iteration? 
+                or does it alternate and move back to the starting state?
+    -> fill-state -> should the element keep the properties mentioned in "to keyframe" or "from keyframe" or "default value"? 
+                    "forwards" keep the final result i.e "to keyframe styles"
+                    "backwards" keep the element in initial state after the animation i.e "from keyframe styles".
+
+    ex- /* @keyframes duration | easing-function | delay |
+        iteration-count | direction | fill-mode | play-state | name */
+        animation: 3s ease-in 1s 2 reverse both paused wiggle;
+
+96. Adding multiple keyframes
+    @keyframes wiggle {
+        0% {
+            transform: rotateZ(0deg);
+        }
+
+        50% {
+            transform: rotateZ(-10deg);
+        }
+
+        100% {
+            transform: rotateZ(10deg);
+        }
+    }
+    -> we can add as many inbetween steps as we want
+
+97. We can also listen to animation events using js.
+    button.addEventListener("animationstart", () => {});
+    button.addEventListener("animationiteration", () => {});
+    button.addEventListener("animationend", () => {});
