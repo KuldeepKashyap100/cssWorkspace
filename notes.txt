@@ -391,3 +391,73 @@ css animations
     button.addEventListener("animationstart", () => {});
     button.addEventListener("animationiteration", () => {});
     button.addEventListener("animationend", () => {});
+
+98. css variables.
+    :root {
+        --my-var: #fa923f;
+    }
+    .element-3 {
+        color: var(--my-var, #fa923f);
+    }
+    -> defining the variable on root makes it available in the entire document.
+    -> second argument in var is fallback value.
+    
+99. Once a feature reaches recommendation state, it should be implemented in all browsers equally.
+    but until then, each browser might not implement it or some of its features or maybe implement
+    some features differently than other browsers do, simply to try how it works, how do users
+    of that browser use the feature and so on. For this we got vendor prefixes, this is a mechanism
+    which allows browser vendors to implement an upcoming feature in an early version without breaking
+    the feature when it finally gets released.
+    few years ago, to use flex-box, we had to write something like this,
+    .container {
+        display: -webkit-box; // older version of safari
+        display: -ms-flexbox; // IE and edge
+        display: -webkit-flex; // newer version of safari
+        display: flex; // final value should be at the bottom so that older versions of flexbox don't overwrite the new version
+    }
+
+100. why don't they just all use flex?
+    Because if the standard then changes or becomes finalized and they therefore all implement the same
+    specification, then if they suddenly overwrite the flex value to now work different than it used to be,
+    a lot of websites that were early adopters of that technology would get broken.
+    Therefore they have their early adopter implementation,
+    the prefixed version which they don't change even if the standard changes or becomes final and then
+    they implement their final version once that is the case.
+    So now they got different implementations and this allows you a developer to use these features ahead of time,
+    it also ensures that your webpage won't suddenly break and it also,
+    that's another advantage, allows you to safely implement a certain feature which will still work, at least to some extent,
+
+101. autoprefixer is a tool to generate all prefixes.
+
+102. support queries: some features just aren't implemented(yet) in browsers.
+    it takes condition which is property value pair if it is supported by the browser.
+    so in the end browser checks can i read and use that? if the browser can't then it will not
+    execute the code b/w curly braces.
+    @supports(display: grid) {
+        .container {
+            display: grid;
+        }
+    }
+    
+103. use kebab case while naming the class, because css is case insensitive.
+    kebab case -> .page-title
+    snake case -> .pageTitle same as .pagetitle
+
+104. name classes by feature and not by style.
+    by feature -> .page-title
+    by style -> .title-blue
+
+105. BEM(Block Element Modifier)
+    a convention to name classes in uniform and consistent way across project
+    and also prevent clashes(bigger your project gets heigher the chances of you reusing the same class name)
+
+106. .BLOCK__ELEMENT--MODIFIER
+    ex- .main-menu__item--size-big
+        .button__--success
+
+
+
+
+
+
+
