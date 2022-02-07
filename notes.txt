@@ -145,8 +145,8 @@ Flex-items
 css-grid container
 
 53. display: grid to convert container into grid.
-54. grid-template-columns: 200px 2fr 20% 1fr; 
-    this will create 4 columnns of different widths.
+54. grid-template-columns: 200px 2fr 20% 1fr; (fr -> fraction)
+    this will create 4 columns of different widths.
     column 2 will receive twice as width as column 4.
     column 2 and column 4 will take width (100% - 200px) in 2:1.
 
@@ -196,9 +196,11 @@ css-grid container
 65. align-items: center;
     this property is used to position items along the columns(y-axis).
 
-66. if the grid size if greater than the elements contained in it we can also collectively position the entire grid elements.
+66. if the grid size if greater than the elements contained in it we can also collectively position the entire grid.
     justify-content: center;(positioning along x-axis)
     align-content: center;(positioning along y-axis)
+    ex- grid height and width is 1000px but all the rows and columns are occupying only 800px now
+        we can position the enrire grid.
     
 67. grid-auto-rows: 8rem;
     grid-auto-columns: 8rem;
