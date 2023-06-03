@@ -2,11 +2,15 @@
     so it’s only as big as its content requires it to be. That’s why setting height: 100% has no effect. 
     If we want it have an effect we would need to change height of “main”, “body” and “html” elements.
 
-2. For inline elements, we can’t set margin-top and margin-bottom because it might overlap top bottom elements.
+2. For inline elements, we can’t set height, width margin-top and margin-bottom properties because it might overlap top bottom elements.
+    inline The element doesn’t start on a new line and only occupy just the width it requires. You can’t set the width or height.
+    inline-block It’s formatted just like the inline element, where it doesn’t start on a new line. BUT, you can set width and height values.
+    block The element will start on a new line and occupy the full width available. And you can set width and height values.
 
 3. Setting display: none to an element will take it out of the document flow, it is supposed to be used in conjunction with javascript (like in modal).
 
-4. If we want the mixture of inline and block element. We use inline-block it’ll allow margin-top and margin-bottom and padding etc.
+4. If we want the mixture of inline and block element(it's same as inline but we can set height and width). 
+    We use inline-block it’ll allow height, width margin-top and margin-bottom and padding etc.
 
 5. vertical-align: middle aligns the elements in middle of the parent. display property must be inline or inline-block.
     The text-align CSS property sets the horizontal alignment of the content inside a block element or table-cell box. 
@@ -71,18 +75,26 @@
     alternatively we can define a generic-family in our root css code.
 29. font-family can take multiple values.
 
-30. @import url("http://font-url.com") to import fonts in .css files.
+30. @import url("http://font-url.com") to import fonts in .css files.    
 
-31.  font-weight can also take numberic value from 100-900.
+31. font-weight can also take numberic value from 100-900.
 
-32. To import a local font that is on our computer @font-face { font-family: " ", src: url("../fonts/AnonymousPro.ttf")}.
+32. To import a local font that is on our computer:
+    @font-face {
+        font-family: "My Font Name";
+        src: url("assets/myfontname.ttf") format("truetype");
+    }
+    To use the font, switch back to Design view and enter the name of the font 
+    (as you typed it for the font-family line) in the Font name field while formatting text.
+
 33. To change the case font-variant: small-caps to capitalize characters.
 34. To increase the space between each letter letter-spacing: 4px;
 35. line-height: 1, space between top and bottom of the line. 1 = font-size, 2 = 2 * font-size.
 36. text-shadow: 5px 5px blur gray, to add shadow to text.
 37. font-display fallack font is applied until the actual font is downloaded.
 
-38. display: inline-flex then the flex container takes the width required by its elements and does not change its width on window resize(so basically it behaves like inline element)
+38. display: inline-flex then the flex container takes the width required by its elements and 
+    does not change its width on window resize(so basically it behaves like inline element)
     and the height is equal to height of max height element.
     display: flex (block level behavior)
 
@@ -108,9 +120,11 @@ note - items aligns along with main-axis and wraps around cross-axis.
 
 42. shorthand for flex-direction and flex-wrap -> flex-flow: row wrap.
 
-43. align-items: stretch (default value), center, flex-start, flex-end (to align items along cross axis).
+43. align-items: stretch (default value), center, flex-start, flex-end 
+    (to align items along cross axis).
 
-44. justify-content: stretch (default value), center, flex-start, flex-end, space-between, space-around (to align items along main axis).
+44. justify-content: stretch (default value), center, flex-start, flex-end, space-between, space-around 
+    (to align items along main axis).
 
 45. align-content: flex-start (allows us to align content along cross axis when content occupies more than one line)
 
@@ -120,7 +134,8 @@ note - items aligns along with main-axis and wraps around cross-axis.
 
 Flex-items
 
-47. order: - 1 (allows us to change the order of elements that elements initially have based on the code in html. bigger the number later the element will be positioned) 
+47. order: - 1 (allows us to change the order of elements that elements initially have based on the code in html. 
+    bigger the number later the element will be positioned) 
     (default value 0, -ve value moves elements left and +ve value moves elements right)
     note - row-reverse will the reverse the current order
 
@@ -128,9 +143,11 @@ Flex-items
     note - difference in contrast to align-items is that align-items refers to all elements.
 
 49. flex-grow: 0 (default value) (allows us to divide extra width space between elements based on some ratio)
-    ex- one item has (flex-grow: 1) and other item has (flex-grow: 4) then extra width is divided by 5 and one part will go to first element and 4 parts will go to second element.
+    ex- one item has (flex-grow: 1) and other item has (flex-grow: 4) then extra width is divided by 5 and 
+    one part will go to first element and 4 parts will go to second element.
 
-50. flex-shrink: 1 (default value) (specifies how the item will shrink relative to the rest of the flex items inside the same container.
+50. flex-shrink: 1 (default value) (specifies how the item will shrink 
+    relative to the rest of the flex items inside the same container.
     If the size of all flex items is larger than the flex container, items shrink to fit according to flex-shrink).
     note - flex-shrink: 0 will disable the shrink
 
@@ -196,7 +213,7 @@ css-grid container
 65. align-items: center;
     this property is used to position items along the columns(y-axis).
 
-66. if the grid size if greater than the elements contained in it we can also collectively position the entire grid.
+66. if the grid size is greater than the elements contained in it we can also collectively position the entire grid.
     justify-content: center;(positioning along x-axis)
     align-content: center;(positioning along y-axis)
     ex- grid height and width is 1000px but all the rows and columns are occupying only 800px now
@@ -284,7 +301,7 @@ grid cell
 
 86. transform-style: flat(default value) or preserve-3d;
     when we rotate any container element by 90deg in x or y then all its children will also hide
-    event though they might have some rotation of their own. to avoid this behavior we use  preserve-3d;
+    even though they might have some rotation of their own. to avoid this behavior we use  preserve-3d;
     definition - The transform-style CSS property sets whether children of an element are positioned in the 3D space 
                 or are flattened in the plane of the element.
 
@@ -345,7 +362,8 @@ css animations
     This lets you configure the timing, duration, and other details of how the animation sequence should progress. 
     This does not configure the actual appearance of the animation, which is done using the @keyframes.
 
-95. ex -
+95. animation: animatation-name animatation-duration animatation-delay animatation-iteration-count animatation-direction animatation-fill-mode
+    ex -
     @keyframes wiggle {
         from {
             transform: rotateZ(0deg);
@@ -356,18 +374,23 @@ css animations
         }
     }
     .start-hosting-button {
-        animation: wiggle 200ms 3s 8;
+        animation: wiggle 200ms 3s 8 none;
     }
+    
     animatation property
-    -> first argument -> keyframe name
-    -> second argument -> duration of the animation
-    -> third argument -> delay
-    -> fourth argument -> animation iterations (how many times it'll play)
-    -> direction -> what should happen after one iteration ? does it snap back to the starting state and start the next iteration? 
-                or does it alternate and move back to the starting state?
-    -> fill-state -> should the element keep the properties mentioned in "to keyframe" or "from keyframe" or "default value"? 
+    -> animatation-name -> keyframe name
+    -> animatation-duration -> duration of the animation
+    -> animatation-delay -> delay
+    -> animatation-iteration-count -> animation iterations (how many times it'll play)
+    -> animatation-direction -> what should happen after one iteration ? does it snap back to the starting state and start the next iteration? or does it alternate and move back to the starting state?
+                normal - The animation is played as normal (forwards). This is default.
+                reverse - The animation is played in reverse direction (backwards)
+                alternate - The animation is played forwards first, then backwards
+                alternate-reverse - The animation is played backwards first, then forwards
+    -> animatation-fill-mode -> should the element keep the properties mentioned in "to keyframe" or "from keyframe" or "default value"? 
                     "forwards" keep the final result i.e "to keyframe styles"
                     "backwards" keep the element in initial state after the animation i.e "from keyframe styles".
+                    "both" keep initial state at beginning and final state in the end
 
     ex- /* @keyframes duration | easing-function | delay |
         iteration-count | direction | fill-mode | play-state | name */
@@ -404,7 +427,8 @@ css animations
     -> defining the variable on root makes it available in the entire document.
     -> second argument in var is fallback value.
     
-99. Once a feature reaches recommendation state, it should be implemented in all browsers equally.
+99. vendor prefixes
+    Once a feature reaches recommendation state, it should be implemented in all browsers equally.
     but until then, each browser might not implement it or some of its features or maybe implement
     some features differently than other browsers do, simply to try how it works, how do users
     of that browser use the feature and so on. For this we got vendor prefixes, this is a mechanism
@@ -457,9 +481,23 @@ css animations
     ex- .main-menu__item--size-big
         .button__--success
 
+107. PostCSS
+    PostCSS is not a preprocessor, but a postprocessor. 
+    That means it does not have its own syntax, 
+    but instead uses standard CSS and modifies it with plugins. 
+    Plugins are JavaScript modules that can add features, 
+    fix bugs, optimize code, or create custom transformations. 
+    You can choose the plugins you need and configure them in your project, 
+    using tools like webpack, gulp, or npm scripts.
+    PostCSS can also improve your performance and compatibility, 
+    by optimizing your code, adding vendor prefixes, or polyfilling new features.
+    choose based on -> complexity and size of your project
 
-
-
-
+108. Sass or Less
+    Sass and Less are two popular preprocessors that extend the capabilities of CSS. 
+    They allow you to use variables, mixins, functions, nesting, inheritance, 
+    and other features that make your code more readable and maintainable.
+    They also have their own syntax, which requires you to compile your code 
+    into plain CSS before sending it to the browser.
 
 
